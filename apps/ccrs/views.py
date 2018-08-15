@@ -2,7 +2,10 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+import bcrypt
+import datetime
 # Create your views here.
 def index(request):
     return render(request, 'ccrs/index.html')
@@ -45,8 +48,11 @@ def logout(request):
     request.session.clear()
     return redirect('/')
 
-def reqister_page(request):
+def register_page(request):
     return render(request, 'ccrs/register.html')
 
 def login_page(request):
     return render(request, 'ccrs/login.html')
+
+def about(request):
+    return render(request, 'ccrs/about.html')

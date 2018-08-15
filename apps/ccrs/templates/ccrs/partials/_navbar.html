@@ -1,19 +1,27 @@
+
 <nav class="navbar navbar-expand fixed-top be-top-header">
     <div class="container-fluid">
-      <div class="be-navbar-header"><a class="navbar-brand" href="index.html"></a>
+        {% load static %}
+      <div class="be-navbar-header"><a href="/"> <img class="img-fluid" src="{% static 'ccrs/assets/img/logo_new_2.png' %}" alt=""></a>
       </div>
       <div class="be-right-navbar">
         <ul class="nav navbar-nav float-right be-user-nav">
-          <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><img src="assets/img/avatar.png" alt="Avatar"><span class="user-name">Túpac Amaru</span></a>
+          <li class="nav-item dropdown">
+              {% load static %}
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{% static 'ccrs/assets/img/avatar.png' %}" alt="Avatar">
+            <span class="user-name"></span></a>
             <div class="dropdown-menu" role="menu">     
               <div class="user-info">
-                <div class="user-name">Túpac Amaru</div>
-                <div class="user-position online">Available</div>
-              </div><a class="dropdown-item" href="pages-profile.html"><span class="icon mdi mdi-face"></span>Account</a><a class="dropdown-item" href="#"><span class="icon mdi mdi-settings"></span>Settings</a><a class="dropdown-item" href="pages-login.html"><span class="icon mdi mdi-power"></span>Logout</a>
+                <div class="user-name"></div>
+                <div class="user-position"></div>
+              </div>
+                    <a class="dropdown-item" href="login-page"><span class="icon mdi mdi-power"></span>Login</a>
+                    <a class="dropdown-item" href="register-page"><i class="far fa-user"></i> Register</a>
+                    <a class="dropdown-item" href="logout"><span class="icon mdi mdi-power"></span>Logout</a>
             </div>
           </li>
         </ul>
-        <div class="page-title"><span>Blank Page</span></div>
+        <div class="page-title"></div>
         <ul class="nav navbar-nav float-right be-icons-nav">
           <li class="nav-item dropdown"><a class="nav-link be-toggle-right-sidebar" href="#" role="button" aria-expanded="false"><span class="icon mdi mdi-settings"></span></a></li>
           <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><span class="icon mdi mdi-notifications"></span><span class="indicator"></span></a>
@@ -82,11 +90,11 @@
           <div class="left-sidebar-content">
             <ul class="sidebar-elements">
               <li class="divider">Menu</li>
-                <li class="parent"><a href="#"><i class="far fa-home"></i><span>Home</span></a></li>
-                <li class="parent"><a href="#"><i class="far fa-question-circle"></i><span>About</span></a></li>
-                <li class="parent"><a href="#"><i class="far fa-wrench"></i><span>Services</span></a></li>
-                <li class="parent"><a href="#"><i class="far fa-comment-smile"></i><span>Reviews</span></a></li>
-                <li class="parent"><a href="#"><i class="far fa-file-signature"></i><span>Contact</span></a></li>
+                <li class="parent"><a href="/"><i class="far fa-home"></i><span>Home</span></a></li>
+                <li class="parent"><a href="/about"><i class="far fa-question-circle"></i><span>About</span></a></li>
+                <li class="parent"><a href="/services"><i class="far fa-wrench"></i><span>Services</span></a></li>
+                <li class="parent"><a href="/reviews"><i class="far fa-comment-smile"></i><span>Reviews</span></a></li>
+                <li class="parent"><a href="/contact"><i class="far fa-file-signature"></i><span>Contact</span></a></li>
             </ul>
           </div>
         </div>

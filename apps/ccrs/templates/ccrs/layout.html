@@ -7,12 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     {% load staticfiles %}
-    <link rel="shortcut icon" href="{% static 'ccrs/assets/img/logo-fav.png' %}">
-    <title>Beagle</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'ccrs/assets/lib/perfect-scrollbar/css/perfect-scrollbar.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'ccrs/assets/lib/material-design-icons/css/material-design-iconic-font.min.css' %}"/>
+    <link rel="shortcut icon" href="{% static 'ccrs/assets/img/logo_new_2.png' %}">
+    <title>{% block title %}Complete Credit Repair Services{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ccrs/dist/html/assets/lib/perfect-scrollbar/css/perfect-scrollbar.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'ccrs/dist/html/assets/lib/material-design-icons/css/material-design-iconic-font.min.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'ccrs/assets/css/fa/css/all.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'ccrs/assets/css/app.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'ccrs/dist/html/assets/css/app.css' %}" type="text/css"/>
   </head>
   <body>
     <div class="be-wrapper">
@@ -23,14 +23,14 @@
         </div>
         {% include 'ccrs/partials/_right_navbar.html' %}
     </div>
-    <script src="{% static 'ccrs/assets/lib/jquery/jquery.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'ccrs/assets/lib/jquery/jquery.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'ccrs/js/app.js' %}" type="text/javascript"></script>
-    <script src="{% static 'ccrs/js/main.js' %}" type="text/javascript"></script>
-    <script src="{% static 'ccrs/js/app-icons.js' %}" type="text/javascript"></script>
-    <script src="{% static 'ccrs/assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'ccrs/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
-    <script src="{% static 'ccrs/assets/js/app.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/dist/html/assets/lib/jquery/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/dist/html/assets/lib/jquery/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/dist/html/assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/dist/html/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/dist/html/assets/js/app-dashboard.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/dist/html/assets/js/app.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/dist/html/assets/js/app-ui-nestable-lists.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/dist/html/assets/js/app-form-elements.js' %}" type="text/javascript"></script>
     <script type="text/javascript">
       $(document).ready(function(){
       	//-initialize the javascript
