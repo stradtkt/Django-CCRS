@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from .models import *
@@ -56,7 +57,11 @@ def login_page(request):
     return render(request, 'ccrs/login.html')
 
 def about(request):
-    return render(request, 'ccrs/about.html')
+    user = User.objects.all()
+    context = {
+        "user": user
+    }
+    return render(request, 'ccrs/about.html', context)
 
 def reviews(request):
     return render(request, 'ccrs/reviews.html')

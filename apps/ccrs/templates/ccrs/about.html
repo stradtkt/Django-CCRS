@@ -27,7 +27,10 @@
                   <div class="card text-center">
                     <div class="card-header">Card with tabs complete</div>
                     <div class="card-body">
-                      <p>Curabitur eleifend augue non convallis condimentum. In iaculis eu est at iaculis Praesent finibus est sit amet orci posuere vulputate. </p><a class="btn btn-primary" href="#">Go somewhere</a>
+                        {% for person in user %}
+                            <p>{{person.first_name}}</p>
+                            <p>{{person.password}}</p><br>
+                        {% endfor %}
                     </div>
                   </div>
                 </div>

@@ -4,12 +4,26 @@
 
         <div class="be-content">
           <div class="main-content container-fluid">
+                <div class="row">
+                        <div class="col-lg-6 offset-3">
+                                {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                        <li{% if message.tags == "error" %} class="bg-danger text-white" 
+                                        {% elif message.tags == "success" %} class="bg-success text-white"
+                                        {% endif %}>{{message}}</li><br>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
             <div class="splash-container sign-up">
               <div class="card card-border-color card-border-color-primary">
                   {% load static %}
                 <div class="card-header"><img class="logo-img" src="{% static 'ccrs/assets/img/logo_new_2.png' %}" alt="logo"><span class="splash-description">Please enter your user information.</span></div>
                 <div class="card-body">
                   <form action="register" method="POST"><span class="splash-title pb-4">Sign Up</span>
+                    {% csrf_token %}
                     <div class="form-group">
                       <input class="form-control" type="text" name="first_name" required="" placeholder="First Name">
                     </div>
@@ -24,10 +38,10 @@
                     </div>
                     <div class="form-group row signup-password">
                       <div class="col-6">
-                        <input class="form-control" id="pass1" type="password" required="" placeholder="Password">
+                        <input class="form-control" name="password" type="password" required="" placeholder="Password">
                       </div>
                       <div class="col-6">
-                        <input class="form-control" required="" name="confirm_pass" placeholder="Confirm">
+                        <input class="form-control" type="password" required="" name="confirm_pass" placeholder="Confirm">
                       </div>
                     </div>
                     <div class="form-group pt-2">

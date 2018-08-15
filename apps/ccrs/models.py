@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.db import models
-import datetime
 class UserManager(models.Manager):
     def validate_user(self, postData):
         errors = {}
@@ -21,9 +20,6 @@ class UserManager(models.Manager):
                 errors['last_alpha'] = "Your first name can only contain letters"
         if postData['dob'] == "":
             errors['dob'] = "Your date of birth cannot be empty"
-        today = datetime.datetime.now()
-        if postData['dob'] > today:
-            errors['dob'] = "Your date of birth cannot be in the future"
         # validate email
         try:
             validate_email(postData['email'])
