@@ -1,5 +1,5 @@
 {% extends 'ccrs/layout.html' %}
-{% block title %} {{block.super}} | Home {% endblock %}
+{% block title %} {{block.super}} | Login Into Credit Repair Services {% endblock %}
 {% block content %}
 
     <div class="be-content">
@@ -9,26 +9,19 @@
               {% load static %}
             <div class="card-header"><img class="logo-img" src="{% static 'ccrs/assets/img/logo_new_2.png' %}" alt="logo"><span class="splash-description">Please enter your user information.</span></div>
             <div class="card-body">
-              <form>
+              <form action="login" method="POST">
+                  {% csrf_token %}
                 <div class="form-group">
-                  <input class="form-control" id="username" type="text" placeholder="Username" autocomplete="off">
+                  <input class="form-control" name="email" id="username" type="text" placeholder="Email" autocomplete="off">
                 </div>
                 <div class="form-group">
                   <input class="form-control" id="password" type="password" placeholder="Password">
                 </div>
-                <div class="form-group row login-tools">
-                  <div class="col-6 login-remember">
-                    <label class="custom-control custom-checkbox">
-                      <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
-                    </label>
-                  </div>
-                  <div class="col-6 login-forgot-password"><a href="pages-forgot-password.html">Forgot Password?</a></div>
-                </div>
-                <div class="form-group login-submit"><a class="btn btn-primary btn-xl" href="index.html" data-dismiss="modal">Sign me in</a></div>
+                <input type="submit" value="Login" class="btn btn-primary">
               </form>
             </div>
           </div>
-          <div class="splash-footer"><span>Don't have an account? <a href="pages-sign-up.html">Sign Up</a></span></div>
+          <div class="splash-footer"><span>Don't have an account? <a href="/register-page">Sign Up</a></span></div>
         </div>
       </div>
     </div>

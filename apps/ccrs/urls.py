@@ -9,4 +9,7 @@ urlpatterns = [
     url(r'^login-page$', views.login_page),
     url(r'^register-page$', views.register_page),
     url(r'^about$', views.about),
+    url(r'^reviews$', views.reviews),
+    url(r'^services$', views.services),
+    url(r'^contact$', views.contact),
 ]

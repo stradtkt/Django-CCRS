@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.db import models
-
+import datetime
 class UserManager(models.Manager):
     def validate_user(self, postData):
         errors = {}
@@ -19,11 +19,11 @@ class UserManager(models.Manager):
                 errors['last_len'] = "Your name needs to be 2 or more characters"
             if not postData['last_name'].isalpha():
                 errors['last_alpha'] = "Your first name can only contain letters"
-
-        if len(postData['alias']) < 3:
-            errors['alias'] = "Your alias needs to be 3 or more characters"
-        if len(postData['dob']) == 0:
+        if postData['dob'] == "":
             errors['dob'] = "Your date of birth cannot be empty"
+        today = datetime.datetime.now()
+        if postData['dob'] > today:
+            errors['dob'] = "Your date of birth cannot be in the future"
         # validate email
         try:
             validate_email(postData['email'])
@@ -34,7 +34,7 @@ class UserManager(models.Manager):
                 errors['email'] = "This email already exists"
 
         # validate password
-        if len(postData['password']) < 4:
+        if len(postData['password']) < 8:
             errors['password'] = "Please enter a longer password, needs to be four or more characters"
         if postData['password'] != postData['confirm_pass']:
             errors['confirm_pass'] = "Passwords must match"

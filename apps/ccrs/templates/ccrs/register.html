@@ -9,42 +9,34 @@
                   {% load static %}
                 <div class="card-header"><img class="logo-img" src="{% static 'ccrs/assets/img/logo_new_2.png' %}" alt="logo"><span class="splash-description">Please enter your user information.</span></div>
                 <div class="card-body">
-                  <form action="index.html" method="get"><span class="splash-title pb-4">Sign Up</span>
+                  <form action="register" method="POST"><span class="splash-title pb-4">Sign Up</span>
                     <div class="form-group">
-                      <input class="form-control" type="text" name="nick" required="" placeholder="Username" autocomplete="off">
+                      <input class="form-control" type="text" name="first_name" required="" placeholder="First Name">
                     </div>
                     <div class="form-group">
-                      <input class="form-control" type="email" name="email" required="" placeholder="E-mail" autocomplete="off">
+                        <input class="form-control" type="text" name="last_name" required="" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                      <input class="form-control" type="email" name="email" required="" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="date" name="dob" required="" placeholder="Date of Birth">
                     </div>
                     <div class="form-group row signup-password">
                       <div class="col-6">
                         <input class="form-control" id="pass1" type="password" required="" placeholder="Password">
                       </div>
                       <div class="col-6">
-                        <input class="form-control" required="" placeholder="Confirm">
+                        <input class="form-control" required="" name="confirm_pass" placeholder="Confirm">
                       </div>
                     </div>
                     <div class="form-group pt-2">
                       <button class="btn btn-block btn-primary btn-xl" type="submit">Sign Up</button>
                     </div>
-                    <div class="title"><span class="splash-title pb-3">Or</span></div>
-                    <div class="form-group row social-signup pt-0">
-                      <div class="col-6">
-                        <button class="btn btn-lg btn-block btn-social btn-facebook btn-color" type="button"><i class="mdi mdi-facebook icon icon-left"></i>Facebook</button>
-                      </div>
-                      <div class="col-6">
-                        <button class="btn btn-lg btn-block btn-social btn-google-plus btn-color" type="button"><i class="mdi mdi-google-plus icon icon-left"></i>Google Plus</button>
-                      </div>
-                    </div>
-                    <div class="form-group pt-3 mb-3">
-                      <label class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By creating an account, you agree the <a href="#">terms and conditions</a>.</span>
-                      </label>
-                    </div>
                   </form>
                 </div>
               </div>
-              <div class="splash-footer">&copy; 2018 Your Company</div>
+              <div class="splash-footer">&copy; 2018 Complete Credit Repair Services</div>
             </div>
           </div>
         </div>
