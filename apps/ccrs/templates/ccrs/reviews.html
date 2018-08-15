@@ -30,9 +30,17 @@
               <div class="tab-content">
                 <div class="tab-pane active" id="active2" role="tabpanel">
                   <div class="card text-center">
-                    <div class="card-header">Card with tabs complete</div>
+                    <div class="card-header">Reviews</div>
                     <div class="card-body">
-                      <p>Curabitur eleifend augue non convallis condimentum. In iaculis eu est at iaculis Praesent finibus est sit amet orci posuere vulputate. </p><a class="btn btn-primary" href="#">Go somewhere</a>
+                        {% if reviews %}
+                            {% for review in reviews %}
+                                <div class="review">
+                                    <script>for(var i = 0; i < {{review.rating}}; i++) {document.write('<i class="fas fa-star"></i>'); }</script>
+                                    <p>{{review.content}}</p>
+                                    <small>~ {{review.user.first_name}} {{review.user.last_name}}</small>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                   </div>
                 </div>
@@ -40,7 +48,24 @@
                   <div class="card">
                     <div class="card-header">Card with tabs complete</div>
                     <div class="card-body">
-                      <p>Curabitur eleifend augue non convallis condimentum. In iaculis eu est at iaculis Praesent finibus est sit amet orci posuere vulputate. </p><a class="btn btn-primary" href="#">Go somewhere</a>
+                        <form action="review" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <select name="rating" class="form-control">
+                                    <option value="">Select a rating</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Review</label>
+                                <textarea name="content" class="form-control" name="content" cols="30" rows="10"></textarea>
+                            </div>
+                            <input type="submit" value="Send" class="btn btn-success">
+                        </form>
                     </div>
                   </div>
                 </div>

@@ -22,13 +22,13 @@
               {% load static %}
             <div class="card-header"><img class="logo-img" src="{% static 'ccrs/assets/img/logo_new_2.png' %}" alt="logo"><span class="splash-description">Please enter your user information.</span></div>
             <div class="card-body">
-              <form action="login" method="POST">
+              <form action="login" method="post">
                   {% csrf_token %}
                 <div class="form-group">
-                  <input class="form-control" name="email"type="email" placeholder="Email">
+                  <input type="email"  class="form-control" name="email" placeholder="Email">
                 </div>
                 <div class="form-group">
-                  <input class="form-control"type="password" placeholder="Password">
+                  <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
                 <input type="submit" value="Login" class="btn btn-primary">
               </form>

@@ -5,12 +5,16 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-from .models import *
+from .models import User, Review
 import bcrypt
 import datetime
 # Create your views here.
 def index(request):
-    return render(request, 'ccrs/index.html')
+    user = User.objects.get(id=request.session['id'])
+    context = {
+        "user": user
+    }
+    return render(request, 'ccrs/index.html', context)
 
 def login(request):
     email = request.POST['email']
@@ -21,7 +25,7 @@ def login(request):
         if is_pass:
             request.session['id'] = user[0].id
             messages.success(request, 'Logged In!')
-            return redirect('/reviews')
+            return redirect('/')
         else:
             messages.error(request, "Incorrect email and/or password")
             return redirect('/login-page')
@@ -51,23 +55,60 @@ def logout(request):
     return redirect('/')
 
 def register_page(request):
-    return render(request, 'ccrs/register.html')
+    user = User.objects.get(id=request.session['id'])
+    context = {
+        "user": user
+    }
+    return render(request, 'ccrs/register.html', context)
 
 def login_page(request):
-    return render(request, 'ccrs/login.html')
+    user = User.objects.get(id=request.session['id'])
+    context = {
+        "user": user
+    }
+    return render(request, 'ccrs/login.html', context)
 
 def about(request):
-    user = User.objects.all()
+    user = User.objects.get(id=request.session['id'])
     context = {
         "user": user
     }
     return render(request, 'ccrs/about.html', context)
 
+def review(request):
+    errors = Review.objects.validate_review(request.POST)
+    if len(errors):
+        for tag, error in errors.iteritems():
+            messages.error(request, error)
+        return redirect('/reviews')
+    else:
+        user = User.objects.get(id=request.session['id'])
+        rating = request.POST['rating']
+        content = request.POST['content']
+        Review.objects.create(user=user, rating=rating, content=content)
+        messages.success(request, 'Review Added')
+        return redirect("/reviews")
+
+
 def reviews(request):
-    return render(request, 'ccrs/reviews.html')
+    user = User.objects.get(id=request.session['id'])
+    reviews = Review.objects.all()
+    context = {
+        "user": user,
+        "reviews": reviews,
+    }
+    return render(request, 'ccrs/reviews.html', context)
 
 def services(request):
-    return render(request, 'ccrs/services.html')
+    user = User.objects.get(id=request.session['id'])
+    context = {
+        "user": user
+    }
+    return render(request, 'ccrs/services.html', context)
 
 def contact(request):
-    return render(request, 'ccrs/contact.html')
+    user = User.objects.get(id=request.session['id'])
+    context = {
+        "user": user
+    }
+    return render(request, 'ccrs/contact.html', context)

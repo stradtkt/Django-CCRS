@@ -31,7 +31,7 @@ class UserManager(models.Manager):
 
         # validate password
         if len(postData['password']) < 8:
-            errors['password'] = "Please enter a longer password, needs to be four or more characters"
+            errors['password'] = "Please enter a longer password, needs to be 8 or more characters"
         if postData['password'] != postData['confirm_pass']:
             errors['confirm_pass'] = "Passwords must match"
         return errors
@@ -47,3 +47,20 @@ class User(models.Model):
     objects = UserManager()
     def __str__(self):
         return self.email
+
+class ReviewManager(models.Manager):
+    def validate_review(self, postData):
+        errors = {}
+        if len(postData['rating']) == 0:
+            errors['rating'] = "You need to add a rating"
+        if len(postData['content']) < 5:
+            errors['content'] = "You need to add 5 or more characters for the review"
+        return errors
+
+class Review(models.Model):
+    user = models.ForeignKey(User, related_name="review")
+    rating = models.IntegerField()
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    objects = ReviewManager()

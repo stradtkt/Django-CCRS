@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^reviews$', views.reviews),
     url(r'^services$', views.services),
     url(r'^contact$', views.contact),
+    url(r'^review$', views.review),
 ]
