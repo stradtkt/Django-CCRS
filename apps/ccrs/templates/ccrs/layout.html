@@ -6,22 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
+    {% load staticfiles %}
     <link rel="shortcut icon" href="{% static 'ccrs/assets/img/logo-fav.png' %}">
     <title>Beagle</title>
-    {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'ccrs/assets/lib/perfect-scrollbar/css/perfect-scrollbar.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'ccrs/assets/lib/material-design-icons/css/material-design-iconic-font.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'ccrs/assets/css/fa/css/all.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'ccrs/assets/css/app.css' %}" type="text/css"/>
   </head>
   <body>
     <div class="be-wrapper">
-        {% include 'partials/_navbar.html' %}
-        <div class="container">
-            {% block content %}{% endblock %}
+        {% include 'ccrs/partials/_navbar.html' %}
+            <div class="main">
+                {% block content %}{% endblock %}
+            </div>
         </div>
-        {% include 'partials/_right_navbar.html' %}
+        {% include 'ccrs/partials/_right_navbar.html' %}
     </div>
     <script src="{% static 'ccrs/assets/lib/jquery/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/assets/lib/jquery/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/js/app.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/js/main.js' %}" type="text/javascript"></script>
+    <script src="{% static 'ccrs/js/app-icons.js' %}" type="text/javascript"></script>
     <script src="{% static 'ccrs/assets/lib/perfect-scrollbar/js/perfect-scrollbar.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'ccrs/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'ccrs/assets/js/app.js' %}" type="text/javascript"></script>
