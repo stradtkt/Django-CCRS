@@ -10,7 +10,10 @@ import bcrypt
 import datetime
 # Create your views here.
 def index(request):
-    user = User.objects.get(id=request.session['id'])
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+    else:
+        user = User.objects.all()
     context = {
         "user": user
     }
@@ -55,21 +58,30 @@ def logout(request):
     return redirect('/')
 
 def register_page(request):
-    user = User.objects.get(id=request.session['id'])
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+    else:
+        user = User.objects.all()
     context = {
         "user": user
     }
     return render(request, 'ccrs/register.html', context)
 
 def login_page(request):
-    user = User.objects.get(id=request.session['id'])
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+    else:
+        user = User.objects.all()
     context = {
         "user": user
     }
     return render(request, 'ccrs/login.html', context)
 
 def about(request):
-    user = User.objects.get(id=request.session['id'])
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+    else:
+        user = User.objects.all()
     context = {
         "user": user
     }
@@ -89,9 +101,33 @@ def review(request):
         messages.success(request, 'Review Added')
         return redirect("/reviews")
 
+def appointments(request):
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+    else:
+        user = User.objects.all()
+    context = {
+        "user": user,
+    }
+    return render(request, 'ccrs/appointments.html', context)
+
+def profile(request, id):
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+    else:
+        user = User.objects.all()
+    the_user = User.objects.get(id=id)
+    context = {
+        "user": user,
+        "the_user": the_user,
+    }
+    return render(request, 'ccrs/profile.html', context)
 
 def reviews(request):
-    user = User.objects.get(id=request.session['id'])
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+    else:
+        user = User.objects.all()
     reviews = Review.objects.all()
     context = {
         "user": user,
@@ -100,14 +136,20 @@ def reviews(request):
     return render(request, 'ccrs/reviews.html', context)
 
 def services(request):
-    user = User.objects.get(id=request.session['id'])
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+    else:
+        user = User.objects.all()
     context = {
         "user": user
     }
     return render(request, 'ccrs/services.html', context)
 
 def contact(request):
-    user = User.objects.get(id=request.session['id'])
+    if 'id' in request.session:
+        user = User.objects.get(id=request.session['id'])
+    else:
+        user = User.objects.all()
     context = {
         "user": user
     }

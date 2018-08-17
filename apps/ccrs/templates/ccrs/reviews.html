@@ -32,22 +32,30 @@
                   <div class="card text-center">
                     <div class="card-header">Reviews</div>
                     <div class="card-body">
+                            <div class="review">
                         {% if reviews %}
                             {% for review in reviews %}
-                                <div class="review">
-                                    <script>for(var i = 0; i < {{review.rating}}; i++) {document.write('<i class="fas fa-star"></i>'); }</script>
-                                    <p>{{review.content}}</p>
-                                    <small>~ {{review.user.first_name}} {{review.user.last_name}}</small>
-                                </div>
+                                <div class="card">
+                                    <div class="card-header"><script>for(var i = 0; i < {{review.rating}}; i++) {document.write('<i class="fas fa-star"></i>'); }</script></div>
+                                        <div class="card-body">
+                                        <p>{{review.content}}</p>
+                                          <small>~ {{review.user.first_name}} {{review.user.last_name}}</small>
+                                        </div>
+                                      </div>
                             {% endfor %}
                         {% endif %}
+                    </div>
                     </div>
                   </div>
                 </div>
                 <div class="tab-pane" id="link2" role="tabpanel">
                   <div class="card">
-                    <div class="card-header">Card with tabs complete</div>
+                      {% if 'id' not in request.session %}
+                    <div class="card-header">Login To Leave A Review</div>
+                    <a href="/login-page" class="btn btn-primary">Login</a>
+                      {% endif %}
                     <div class="card-body">
+                        {% if 'id' in request.session %}
                         <form action="review" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
@@ -66,6 +74,7 @@
                             </div>
                             <input type="submit" value="Send" class="btn btn-success">
                         </form>
+                        {% endif %}
                     </div>
                   </div>
                 </div>

@@ -13,4 +13,6 @@ urlpatterns = [
     url(r'^services$', views.services),
     url(r'^contact$', views.contact),
     url(r'^review$', views.review),
+    url(r'^(?P<id>\d+)/profile$', views.profile),
+    url(r'^appointments$', views.appointments),
 ]
